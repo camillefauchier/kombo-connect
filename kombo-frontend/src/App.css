@@ -1,0 +1,118 @@
+/* General Container Styles */
+.app-container {
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  width: 80%;
+  gap: 16px;
+  background-color: white;
+  min-height: 100vh;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.companies-page {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.sidebar ul li.selected {
+  background-color: #ddd;
+}
+
+.dashboard {
+  flex: 1;
+  padding: 20px;
+  background-color: #faf9f9;
+}
+
+.pie-chart {
+  margin-top: 20px;
+  transform: rotate(-90deg);
+}
+
+.circle-male {
+  fill: none;
+  stroke: #4caf50;
+  stroke-width: 2.8;
+}
+
+.circle-female {
+  fill: none;
+  stroke: #f44336;
+  stroke-width: 2.8;
+}
+
+.legend {
+  margin-top: 10px;
+}
+
+.integration-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.integration-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.response-message {
+  margin-top: 20px;
+  font-size: 16px;
+  color: green;
+}
+
