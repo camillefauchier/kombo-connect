@@ -8,8 +8,8 @@ function App() {
             <Router>
                 <nav className="navbar">
                     <ul>
-                        <li><Link to="/companies">Companies</Link></li>
-                        <li><Link to="/integrations">Integrations</Link></li>
+                        <li><Link to="/integrations">Intégration</Link></li>
+                        <li><Link to="/companies">Dashboards</Link></li>
                     </ul>
                 </nav>
                 <Routes>
