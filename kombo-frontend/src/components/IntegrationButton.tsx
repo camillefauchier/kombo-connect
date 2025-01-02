@@ -4,7 +4,7 @@ import axios from "axios";
 function Integration() {
     const [companyName, setCompanyName] = useState("");
     const [email, setEmail] = useState("");
-    const [integrationLink, setIntegrationLink] = useState("");
+    const [integrationLink, setIntegrationLink] = useState("https://connect.kombo.dev/v1?token=eu.25s81sSJRCrC43UVTpKwe6nwR1baVMNnWmvFc3LPqcdUg993gcwHs3kXZnrCuvaj&lng=fr");
     const [copySuccess, setCopySuccess] = useState("");
     const API_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -55,11 +55,11 @@ function Integration() {
                         required
                     />
                 </div>
-                <button type="submit">Créer le lien d'intégration</button>
+                <button type="submit" style={{width:"100%"}}>Créer le lien d'intégration</button>
             </form>
 
             {integrationLink && (
-                <div className="link-container">
+                <div>
                     <p
                         className="integration-link"
                         onClick={handleCopy}

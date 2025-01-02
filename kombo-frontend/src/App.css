@@ -97,18 +97,41 @@ body {
 }
 
 .integration-page {
-  max-width: 600px;
-  margin: 0 auto;
+  width: 600px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: stretch;
 }
 
 .integration-form {
   display: flex;
   flex-direction: column;
+  gap: 15px;
 }
 
+.integration-link {
+  background-color: #e0e0e0; /* Couleur de fond grisée */
+  padding: 10px; /* Espacement interne pour un meilleur rendu */
+  border-radius: 4px; /* Coins arrondis */
+  color: black; /* Couleur du texte */
+  cursor: pointer; /* Changement du curseur */
+  text-align: center; /* Alignement du texte */
+  transition: background-color 0.3s, color 0.3s; /* Effet de transition */
+  overflow-wrap: anywhere;
+}
+
+.integration-link:hover {
+  background-color: #d5d3d3; /* Couleur plus foncée au survol */
+  color: #007bff; /* Couleur du texte au survol */
+  cursor: pointer; /* Assure le curseur pointer */
+}
+
+
 .form-group {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 label {
@@ -121,7 +144,7 @@ input {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 100%;
+  width: 96%;
 }
 
 button {
