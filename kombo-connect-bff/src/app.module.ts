@@ -10,13 +10,14 @@ import { Company } from './companies/company.entity';
       type: 'postgres',
       url: process.env.DATABASE_URL,
       entities: [Company],
-      synchronize: process.env.NODE_ENV !== 'production',
+      synchronize: true, // Forcer la synchronisation
       autoLoadEntities: true,
       ssl:
         process.env.NODE_ENV === 'production'
           ? { rejectUnauthorized: false }
           : false,
     }),
+
     ConfigModule.forRoot({ isGlobal: true }),
     CompaniesModule,
   ],
