@@ -3,25 +3,17 @@ import axios from 'axios';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Company } from './company.entity';
 import { Repository } from 'typeorm';
-import * as crypto from 'crypto';
 
 @Injectable()
 export class IntegrationService {
   private KOMBO_API_URL = 'https://api.kombo.dev/v1/connect/create-link';
   private KOMBO_API_KEY = process.env.KOMBO_API_KEY;
-  private KOMBO_WEBHOOK_SECRET = process.env.KOMBO_WEBHOOK_SECRET;
 
   constructor(
     @InjectRepository(Company)
     private readonly companyRepository: Repository<Company>,
   ) {}
 
-  verifyWebhookSignature(payload: any, signature: string): boolean {
-    const hmac = crypto.createHmac('sha256', this.KOMBO_WEBHOOK_SECRET);
-    hmac.update(JSON.stringify(payload));
-    const expectedSignature = hmac.digest('hex');
-    return expectedSignature === signature;
-  }
 
   async saveIntegration(
     integrationId: string,
