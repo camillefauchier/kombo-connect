@@ -1,12 +1,15 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import Sidebar from "../components/SideBar";
 import Dashboard from "../components/Dashboard";
+import "./Companies.css"
 import axios from "axios";
 
 export interface Company {
-    id: string;
-    name: string;
+    id: number;
+    companyName: string;
+    integrationId: string;
 }
+
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 function Companies() {
@@ -16,6 +19,8 @@ function Companies() {
     useEffect(() => {
         axios.get(`${API_URL}/companies`).then((response) => {
             setCompanies(response.data);
+        }).catch((error) => {
+            console.error("Failed to fetch companies:", error);
         });
     }, []);
 

@@ -12,7 +12,7 @@ function Dashboard({ company }: DashboardProps) {
 
     return (
         <main className="dashboard">
-            <h2>{company.name}</h2>
+            <h2>{company.companyName}</h2>
         </main>
     );
 }

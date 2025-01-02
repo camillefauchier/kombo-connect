@@ -1,10 +1,7 @@
 import React from "react";
 import "../App.css"
+import {Company} from "../pages/Companies";
 
-interface Company {
-    id: string;
-    name: string;
-}
 
 interface SidebarProps {
     companies: Company[];
@@ -23,7 +20,7 @@ function Sidebar({ companies, selectedCompany, onSelectCompany }: SidebarProps) 
                         className={ selectedCompany ? selectedCompany.id === company.id ? "selected" : "" :""}
                         onClick={() => onSelectCompany(company)}
                     >
-                        {company.name}
+                        {company.companyName}
                     </li>
                 ))}
             </ul>

@@ -4,10 +4,37 @@
   justify-self: center;
   flex-direction: column;
   width: 80%;
-  gap: 16px;
-  background-color: white;
   min-height: 100vh;
+  background-color: #faf9f9;
 }
+
+.navbar {
+  background-color: #d5d3d3;
+  padding: 10px 20px;
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar li {
+  margin-right: 20px;
+}
+
+.navbar a {
+  color: black;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: #1e90ff;
+}
+
 
 body {
   font-family: Arial, sans-serif;
