@@ -3,6 +3,7 @@ import { CompaniesModule } from './companies/companies.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Company } from './companies/company.entity';
+import { HealthcheckController } from './healthcheck.controller';
 
 @Module({
   imports: [
@@ -21,5 +22,6 @@ import { Company } from './companies/company.entity';
     ConfigModule.forRoot({ isGlobal: true }),
     CompaniesModule,
   ],
+  controllers: [HealthcheckController],
 })
 export class AppModule {}

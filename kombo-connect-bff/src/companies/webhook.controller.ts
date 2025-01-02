@@ -5,9 +5,11 @@ import {
   Headers,
   HttpException,
   HttpStatus,
+  Req,
 } from '@nestjs/common';
 import { IntegrationService } from './integration.service';
 import { createHmac } from 'node:crypto';
+import { Request } from 'express';
 
 @Controller('webhooks')
 export class WebhookController {
@@ -18,9 +20,16 @@ export class WebhookController {
   async handleIntegrationCompleted(
     @Body() body: any,
     @Headers('x-kombo-signature') signature: string,
+    @Req() request: Request, // Access the raw request object
   ) {
-    // Verify the webhook signature to ensure authenticity
-    if (!this.verifyWebhookSignature(body, signature)) {
+    console.log({ signature });
+    console.log({ body });
+
+    const bodyString = JSON.stringify(body, null, 2);
+    const isValid = this.verifyWebhookSignature(bodyString, signature);
+    console.log({ isValid });
+
+    if (!isValid) {
       throw new HttpException(
         'Invalid webhook signature',
         HttpStatus.FORBIDDEN,
@@ -33,6 +42,8 @@ export class WebhookController {
       const companyName = body.data.end_user.organization_name;
 
       // Save the integration data in the database
+      console.log({ companyName, integrationId });
+
       await this.integrationService.saveIntegration(integrationId, companyName);
 
       return { status: 'success' };
@@ -45,19 +56,10 @@ export class WebhookController {
     }
   }
 
-  verifyWebhookSignature(req: any, KOMBO_WEBHOOK_SECRET: string): boolean {
-    // Retrieve the signature from headers
-    const signatureHeader = req.headers['x-kombo-signature'];
-
-    // Get the raw UTF-8-encoded string body
-    const body = req.rawBody || JSON.stringify(req.body, null, 2);
-
-    // Generate the expected signature
-    const signature = createHmac('sha256', KOMBO_WEBHOOK_SECRET)
-      .update(body, 'utf8')
-      .digest('base64url');
-
-    // Compare the computed signature with the header's signature
-    return signature === signatureHeader;
+  private verifyWebhookSignature(body: string, signature: string): boolean {
+    const hmac = createHmac('sha256', this.KOMBO_WEBHOOK_SECRET);
+    hmac.update(body, 'utf8');
+    const expectedSignature = hmac.digest('base64url');
+    return expectedSignature === signature;
   }
 }
