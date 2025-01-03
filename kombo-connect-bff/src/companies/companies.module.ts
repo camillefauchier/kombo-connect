@@ -4,10 +4,11 @@ import { IntegrationService } from './integration.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Company } from './company.entity';
 import { CompaniesService } from './companies.service';
-import {WebhookController} from "./webhook.controller";
+import { WebhookController } from './webhook.controller';
+import { KomboModule } from '../client/kombo.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Company])],
+  imports: [TypeOrmModule.forFeature([Company]), KomboModule],
   controllers: [CompaniesController, WebhookController],
   providers: [IntegrationService, CompaniesService],
 })

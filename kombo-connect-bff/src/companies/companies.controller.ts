@@ -3,6 +3,7 @@ import {
   Get,
   Post,
   Body,
+  Param,
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
@@ -19,6 +20,11 @@ export class CompaniesController {
   @Get()
   getAllCompanies() {
     return this.companiesService.getAllCompanies();
+  }
+
+  @Get(':integrationId/employees/summary')
+  getEmployeesInformation(@Param() params: any) {
+    return this.companiesService.getEmployeesInformation(params.integrationId);
   }
 
   @Post('integration')
