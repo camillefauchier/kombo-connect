@@ -1,29 +1,27 @@
-# Use Node.js 20 as the base image
-FROM node:20 as build
+# Fetching the latest node image on apline linux
+FROM node:alpine AS builder
 
-# Set the working directory
-WORKDIR /usr/src/app
+# Declaring env
+ENV NODE_ENV production
 
-# Copy package.json and yarn.lock
-COPY package.json yarn.lock ./
+# Setting up the work directory
+WORKDIR /app
 
-# Install dependencies
-RUN yarn install
+# Installing dependencies
+COPY ./package.json ./
+RUN npm install
 
-# Copy the application code
+# Copying all the files in our project
 COPY . .
 
-# Build the application
-RUN yarn build
+# Building our application
+RUN npm run build
 
-# Use a lightweight web server for the static files
-FROM nginx:alpine
+# Fetching the latest nginx image
+FROM nginx
 
-# Copy the build files to the nginx public directory
-COPY --from=build /usr/src/app/build /usr/share/nginx/html
+# Copying built assets from builder
+COPY --from=builder /app/build /usr/share/nginx/html
 
-# Expose the port
-EXPOSE 80
-
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Copying our nginx.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
