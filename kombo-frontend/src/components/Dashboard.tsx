@@ -4,6 +4,7 @@ import "./Dashboard.css";
 import axios from "axios";
 import { CircularProgress } from "@mui/material";
 import {Cell, Pie, PieChart, ResponsiveContainer, Tooltip} from "recharts";
+import HierarchyChart from "./HierarchyChart";
 
 interface DashboardProps {
     company: Company | null;
@@ -181,6 +182,9 @@ function Dashboard({ company }: DashboardProps) {
                     </ResponsiveContainer>
                     {company.companyName} emploie {employeesInfo.femaleNumber} femmes et {employeesInfo.maleNumber} hommes
                 </div>
+            </div>
+            <div style={{ width: "100%", height: "fit-content" }}>
+                <HierarchyChart company={company} />
             </div>
         </main>
     );

@@ -1,3 +1,11 @@
+/* PrimeReact Core */
+@import "primereact/resources/themes/saga-blue/theme.css"; /* ou un autre thème */
+@import "primereact/resources/primereact.min.css";
+
+/* PrimeIcons */
+@import "primeicons/primeicons.css";
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +13,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
 code {

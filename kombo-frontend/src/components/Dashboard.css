@@ -1,5 +1,7 @@
 .dashboard {
-    padding: 20px;
+    padding: 40px;
+    overflow-y: auto;
+    width: 100%;
 }
 
 .dashboard-container {
