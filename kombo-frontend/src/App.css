@@ -124,7 +124,7 @@ body {
 
 .integration-link:hover {
   background-color: #d5d3d3; /* Couleur plus foncée au survol */
-  color: #007bff; /* Couleur du texte au survol */
+  color: #ffcd00;; /* Couleur du texte au survol */
   cursor: pointer; /* Assure le curseur pointer */
 }
 
@@ -148,7 +148,7 @@ input {
 }
 
 button {
-  background-color: #007bff;
+  background-color: #ffcd00;;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -157,7 +157,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #ffcd00;;
 }
 
 .response-message {
