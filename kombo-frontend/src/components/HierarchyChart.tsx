@@ -10,10 +10,12 @@ type EmployeeHierarchicalInfo = {
     id: number;
     name: string;
     manager_id: number | null;
+    job_title: string;
 };
 
 type HierarchyNode = {
-    label: string;
+    name: string;
+    job_title: string;
     expanded: boolean; // Ajout d'expanded
     children: HierarchyNode[];
 };
@@ -45,16 +47,16 @@ const HierarchyChart: React.FC<HierarchyChartProps> = ({ company }) => {
                     if (hierarchyData.length > 0) {
                         setHierarchy(hierarchyData);
                     } else {
-                        setHierarchy([{ label: "No Data", expanded: false, children: [] }]);
+                        setHierarchy([{ name: "No Data", expanded: false, children: [], job_title: "" }]);
                     }
                 } else {
                     console.error("Invalid data format: Expected an array");
-                    setHierarchy([{ label: "No Data", expanded: false, children: [] }]);
+                    setHierarchy([{ name: "No Data", expanded: false, children: [], job_title: "" }]);
                 }
             })
             .catch((error) => {
                 console.error("Failed to fetch management summary:", error);
-                setHierarchy([{ label: "Error Fetching Data", expanded: false, children: [] }]);
+                setHierarchy([{ name: "Error Fetching Data", expanded: false, children: [], job_title: "" }]);
             });
     }, [company, API_URL]);
 
@@ -64,7 +66,8 @@ const HierarchyChart: React.FC<HierarchyChartProps> = ({ company }) => {
         // Préparer les nœuds de base
         employees.forEach((employee) => {
             map.set(employee.id, {
-                label: employee.name,
+                name: employee.name,
+                job_title: employee.job_title,
                 expanded: true, // Ajouter 'expanded' par défaut
                 children: [],
             });
@@ -89,11 +92,22 @@ const HierarchyChart: React.FC<HierarchyChartProps> = ({ company }) => {
         return roots;
     };
 
+    const nodeTemplate = (node: HierarchyNode) => {
+        return (
+            <div style={{"fontSize": "12px", width: "80px" }}>
+                <div style={{ fontWeight: "bold" }}>{node.name}</div>
+                <div>{node.job_title}</div>
+                <br />
+            </div>
+        );
+    };
+
     return (
         <div>
-            <h3>Organigramme</h3>
+            <div style={{fontSize:"16px",fontWeight:"bold"}}>Organigramme</div>
             <OrganizationChart
                 value={hierarchy.length > 0 ? hierarchy : [{ label: "No Data", expanded: true, children: [] }]}
+                nodeTemplate={nodeTemplate}
             />
         </div>
     );

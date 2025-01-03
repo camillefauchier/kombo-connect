@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import IntegrationLink from "./IntegrationLink";
 
 function Integration() {
     const [companyName, setCompanyName] = useState("");
@@ -59,16 +60,7 @@ function Integration() {
             </form>
 
             {integrationLink && (
-                <div>
-                    <p
-                        className="integration-link"
-                        onClick={handleCopy}
-                        title="Cliquez pour copier"
-                    >
-                        {integrationLink}
-                    </p>
-                    {copySuccess && <p className="copy-success">{copySuccess}</p>}
-                </div>
+                <IntegrationLink integrationLink={integrationLink}/>
             )}
         </div>
     );

@@ -130,11 +130,10 @@ function Dashboard({ company }: DashboardProps) {
         { name: "Hommes", value: employeesInfo.maleNumber },
     ];
 
-    return ( <main className="dashboard">
-            <h2>{company.companyName}</h2>
+    return ( <div className="dashboard">
+            <div style={{fontSize:"32px",fontWeight:"bold", marginBottom:"10px"}}>{company.companyName}</div>
             <div className="dashboard-container">
-                {/* Graphique Répartition par Âge */}
-                <div className="dashboard-chart">
+                <div className="dashboard-chart" style={{width:"50%"}} >
                     <h3>Répartition par âge</h3>
                     <ResponsiveContainer width="100%" height={300}>
                         <PieChart>
@@ -159,7 +158,7 @@ function Dashboard({ company }: DashboardProps) {
                 </div>
 
                 {/* Graphique Répartition par Genre */}
-                <div className="dashboard-chart">
+                <div className="dashboard-chart" style={{width:"50%"}}>
                     <h3>Répartition par genre</h3>
                     <ResponsiveContainer width="100%" height={300}>
                         <PieChart>
@@ -183,10 +182,10 @@ function Dashboard({ company }: DashboardProps) {
                     {company.companyName} emploie {employeesInfo.femaleNumber} femmes et {employeesInfo.maleNumber} hommes
                 </div>
             </div>
-            <div style={{ width: "100%", height: "fit-content" }}>
+            <div className="dashboard-chart">
                 <HierarchyChart company={company} />
             </div>
-        </main>
+        </div>
     );
 }
 
