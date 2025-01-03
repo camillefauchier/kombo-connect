@@ -21,6 +21,19 @@ export class CompaniesService {
     return this.companyRepository.find(); // Retourne toutes les entreprises
   }
 
+  async getManagement(
+    integrationId: string,
+  ): Promise<{ id: string; name: string; manager_id: string; job_title: string }[]> {
+    const employeesDto =
+      await this.komboEmployeeService.getEmployees(integrationId);
+    return employeesDto.results.map((employeeDto) => ({
+      id: employeeDto.id,
+      name: employeeDto.display_full_name,
+      manager_id: employeeDto.manager_id,
+      job_title: employeeDto.job_title,
+    }));
+  }
+
   async getEmployeesInformation(
     integrationId: string,
   ): Promise<EmployeesInformation> {

@@ -68,6 +68,7 @@ export class EmployeeDto {
   manager?: ManagerDto;
   gender: string;
   date_of_birth: string;
+  manager_id: string;
   start_date?: string;
   termination_date?: string;
   remote_created_at?: string;

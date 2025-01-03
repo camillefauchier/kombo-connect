@@ -27,6 +27,11 @@ export class CompaniesController {
     return this.companiesService.getEmployeesInformation(params.integrationId);
   }
 
+  @Get(':integrationId/management/summary')
+  getManagement(@Param() params: any) {
+    return this.companiesService.getManagement(params.integrationId);
+  }
+
   @Post('integration')
   async createIntegration(
     @Body() body: { email: string; companyName: string },
