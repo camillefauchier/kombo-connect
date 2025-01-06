@@ -10,14 +10,13 @@ export interface Company {
     integrationId: string;
 }
 
-const API_URL = process.env.REACT_APP_BACKEND_URL;
-
 function Companies() {
     const [companies, setCompanies] = useState<Company[]>([]);
     const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
 
     useEffect(() => {
-        axios.get(`${API_URL}/companies`).then((response) => {
+        console.log(console.log("API URL:", process.env.REACT_APP_KOMBO_BACKEND_URL));
+        axios.get(`${process.env.REACT_APP_KOMBO_BACKEND_URL}/companies`).then((response) => {
             setCompanies(response.data);
         }).catch((error) => {
             console.error("Failed to fetch companies:", error);

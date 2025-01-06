@@ -32,13 +32,12 @@ const COLORS = ["#fff7cb", "#ffeb83", "#FFD700", "#FFC700", "#FFB800", "#D5D3D3"
 function Dashboard({ company }: DashboardProps) {
     const [employeesInfo, setEmployeesInfo] = useState<EmployeesInformation | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
-    const API_URL = process.env.REACT_APP_BACKEND_URL;
 
     useEffect(() => {
         if (company) {
             setLoading(true);
             axios
-                .get(`${API_URL}/companies/${company.integrationId}/employees/summary`)
+                .get(`${process.env.REACT_APP_KOMBO_BACKEND_URL}/companies/${company.integrationId}/employees/summary`)
                 .then((response) => {
                     setEmployeesInfo(response.data);
                     setLoading(false);

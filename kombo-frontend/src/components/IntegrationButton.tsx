@@ -7,14 +7,14 @@ function Integration() {
     const [email, setEmail] = useState("");
     const [integrationLink, setIntegrationLink] = useState("");
     const [copySuccess, setCopySuccess] = useState("");
-    const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
         try {
-            const response = await axios.post(`${API_URL}/companies/integration`, {
+            console.log(console.log("API URL:", process.env.REACT_APP_KOMBO_BACKEND_URL));
+            const response = await axios.post(`${process.env.REACT_APP_KOMBO_BACKEND_URL}/companies/integration`, {
                 companyName,
                 email,
             });

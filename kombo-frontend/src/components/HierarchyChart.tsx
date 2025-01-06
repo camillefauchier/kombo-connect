@@ -27,7 +27,7 @@ interface HierarchyChartProps {
 const HierarchyChart: React.FC<HierarchyChartProps> = ({ company }) => {
     const [employees, setEmployees] = useState<EmployeeHierarchicalInfo[] | null>(null);
     const [hierarchy, setHierarchy] = useState<HierarchyNode[]>([]);
-    const API_URL = process.env.REACT_APP_BACKEND_URL;
+    const API_URL = process.env.REACT_APP_KOMBO_BACKEND_URL;
 
     useEffect(() => {
         if (!company) {

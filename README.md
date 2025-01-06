@@ -70,5 +70,5 @@ yarn build
 Create a .env file in the frontend directory:
 
 ```
-REACT_APP_BACKEND_URL=http://localhost:3001
+REACT_APP_KOMBO_BACKEND_URL=http://localhost:3001
 ```
