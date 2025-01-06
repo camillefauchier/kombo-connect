@@ -1,3 +1,5 @@
 build:
   docker:
     web: Dockerfile
+  config:
+    REACT_APP_KOMBO_BACKEND_URL: https://kombo-connect-bff-3e78744b91ea.herokuapp.com
