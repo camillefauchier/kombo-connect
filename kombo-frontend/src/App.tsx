@@ -9,7 +9,7 @@ function App() {
                 <nav className="navbar">
                     <ul>
                         <li><Link to="/integrations">Intégration</Link></li>
-                        <li><Link to="/companies">Dashboards</Link></li>
+                        <li><Link to="/companies">Entreprises</Link></li>
                     </ul>
                 </nav>
                 <Routes>
