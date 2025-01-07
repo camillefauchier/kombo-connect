@@ -26,7 +26,7 @@ export class CompaniesService {
   ): Promise<{ id: string; name: string; manager_id: string; job_title: string }[]> {
     const employeesDto =
       await this.komboEmployeeService.getEmployees(integrationId);
-    return employeesDto.results.map((employeeDto) => ({
+    return employeesDto.map((employeeDto) => ({
       id: employeeDto.id,
       name: employeeDto.display_full_name,
       manager_id: employeeDto.manager_id,
@@ -40,11 +40,11 @@ export class CompaniesService {
     const employeesDto =
       await this.komboEmployeeService.getEmployees(integrationId);
     console.log(employeesDto);
-    const totalNumber = this.calculateTotalNumber(employeesDto.results);
-    const femaleNumber = this.calculateFemaleNumber(employeesDto.results);
-    const maleNumber = this.calculateMaleNumber(employeesDto.results);
+    const totalNumber = this.calculateTotalNumber(employeesDto);
+    const femaleNumber = this.calculateFemaleNumber(employeesDto);
+    const maleNumber = this.calculateMaleNumber(employeesDto);
     const genderRatio = this.calculateGenderRatio(femaleNumber, maleNumber);
-    const age = this.calculateAgeInformation(employeesDto.results);
+    const age = this.calculateAgeInformation(employeesDto);
 
     return {
       totalNumber,
