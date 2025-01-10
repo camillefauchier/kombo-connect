@@ -14,7 +14,6 @@ export class IntegrationService {
     private readonly companyRepository: Repository<Company>,
   ) {}
 
-
   async saveIntegration(
     integrationId: string,
     companyName: string,

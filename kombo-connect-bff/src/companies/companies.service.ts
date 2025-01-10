@@ -23,7 +23,9 @@ export class CompaniesService {
 
   async getManagement(
     integrationId: string,
-  ): Promise<{ id: string; name: string; manager_id: string; job_title: string }[]> {
+  ): Promise<
+    { id: string; name: string; manager_id: string; job_title: string }[]
+  > {
     const employeesDto =
       await this.komboEmployeeService.getEmployees(integrationId);
     return employeesDto.map((employeeDto) => ({

@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import {EmployeeDto} from './get-employees-dto';
+import { EmployeeDto } from './get-employees-dto';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable()
